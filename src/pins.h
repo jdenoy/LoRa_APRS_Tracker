@@ -17,6 +17,7 @@
 #ifdef TTGO_T_Beam_V1_0
 	#define GPS_RX	12
 	#define GPS_TX	34
+	#define MANUAL_SEND 38
 #endif
 
 #endif

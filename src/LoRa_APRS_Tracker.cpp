@@ -31,6 +31,7 @@ void setup()
 	Serial.begin(115200);
 
 #ifdef TTGO_T_Beam_V1_0
+	pinMode(MANUAL_SEND, INPUT); // Prepare GPIO38 as INPUT for Manual TX
 	Wire.begin(SDA, SCL);
 	if (!powerManagement.begin(Wire))
 	{
@@ -83,6 +84,14 @@ void loop()
 		{
 			send_update = true;
 		}
+		#ifdef TTGO_T_Beam_V1_0
+		if (digitalRead(MANUAL_SEND) == LOW) {
+			send_update = true;
+			show_display("<< TX >>", "Manual Sync");
+			Serial.println("TX - Manual Sync");
+		}
+		#endif
+
 	}
 
 	if(send_update && gps.location.isValid() && gps.location.isUpdated())
