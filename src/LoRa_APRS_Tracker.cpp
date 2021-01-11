@@ -24,6 +24,7 @@ String createDateString(time_t t);
 String createTimeString(time_t t);
 
 static bool send_update = true;
+static bool manual_send_update = true;
 
 // Initial lat/lng pos, change to your base station coordnates
 float lastTxLat = 0;
@@ -109,9 +110,7 @@ void loop()
 		}
 		#ifdef TTGO_T_Beam_V1_0
 		if (digitalRead(MANUAL_SEND) == LOW) {
-			send_update = true;
-			show_display("<< TX >>", "Manual Sync");
-			Serial.println("TX - Manual Sync");
+			manual_send_update = true;
 		}
 		#endif
 
@@ -160,6 +159,13 @@ void loop()
 				send_update = true;
 			}
 		}
+	}
+	if (manual_send_update)
+	{
+		send_update = true;
+		show_display("<< TX >>", "Manual Sync");
+		Serial.println("TX - Manual Sync");
+		manual_send_update = false;
 	}
 #endif
 

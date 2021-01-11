@@ -3,7 +3,7 @@
 #define SETTINGS_H_
 
 #define CALL "OE5BPA-7"
-#define BEACON_MESSAGE "LoRa APRS SB Tracker test"
+#define BEACON_MESSAGE "LoRa APRS Tracker with SB - EMCOM Francophone"
 #define BEACON_TIMEOUT 1         // Beacon interval in Minutes. Will be overwritten by SB_ACTIVE
 #define SYMBOL_CODE ">"
 #define SYMBOL_OVERLAY "/"
